@@ -1,0 +1,514 @@
+/* =======================================
+ * CSS VARIABLES AND THEMING
+ * ======================================= */
+/* Light theme variables */
+:root {
+    --primary-color: #4285f4;
+    --secondary-color: #0f9d58;
+    --positive-color: #0f9d58;
+    --negative-color: #db4437;
+    --background-color: #f5f5f5;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --primary-color: #8ab4f8;
+    --secondary-color: #81c995;
+    --positive-color: #81c995;
+    --negative-color: #f28b82;
+    --background-color: #202124;
+    --card-background: #303134;
+    --text-color: #e8eaed;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* =======================================
+ * GLOBAL STYLES
+ * ======================================= */
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Main container with max width and centering */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =======================================
+ * HEADER STYLES
+ * ======================================= */
+/* Layout for the page header */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Heading styles */
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+/* =======================================
+ * PREFERENCES PANEL
+ * ======================================= */
+/* Container for user preferences and settings */
+.preferences-panel {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: var(--box-shadow);
+}
+
+/* Individual preference section */
+.preference-group {
+    margin-bottom: 15px;
+}
+
+/* Layout for preference buttons */
+.preference-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Styled buttons for preferences and actions */
+.pref-btn, .action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* Active state for toggle buttons */
+.pref-btn.active {
+    background-color: var(--secondary-color);
+}
+
+/* Hover effect for buttons */
+.pref-btn:hover, .action-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Dropdown select styling */
+.pref-select {
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    background: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    width: 100%;
+    max-width: 250px;
+}
+
+/* =======================================
+ * MARKET STATISTICS
+ * ======================================= */
+/* Grid layout for market stat cards */
+.market-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Individual stat card styling */
+.stat-card {
+    background: var(--card-background);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =======================================
+ * CRYPTOCURRENCY CARDS
+ * ======================================= */
+/* Grid layout for cryptocurrency cards */
+.crypto-grid, .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+/* Base styling for crypto cards */
+.crypto-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Hover effect for crypto cards */
+.crypto-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Selected state for comparison cards */
+.crypto-card.selected {
+    border-left: 4px solid var(--secondary-color);
+    background-color: rgba(15, 157, 88, 0.05);
+}
+
+/* Favorite state for crypto cards */
+.crypto-card.favorite {
+    border-left: 4px solid #fbbc05;
+}
+
+/* Cryptocurrency name styling */
+.crypto-card h3 {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+}
+
+/* Layout for crypto header with logo and name */
+.crypto-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Crypto logo image styling */
+.crypto-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Cryptocurrency price styling */
+.crypto-card .price {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Price change indicator styling */
+.price-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+/* Positive price change styling (green) */
+.positive {
+    color: var(--positive-color);
+}
+
+/* Negative price change styling (red) */
+.negative {
+    color: var(--negative-color);
+}
+
+/* Volume and market cap text styling */
+.crypto-card .volume, .crypto-card .market-cap {
+    font-size: 0.9em;
+    margin: 8px 0;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Layout for card action buttons */
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+/* Comparison toggle button styling */
+.toggle-comparison {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    font-size: 0.9em;
+}
+
+/* Hover effect for comparison toggle */
+.toggle-comparison:hover {
+    opacity: 0.9;
+}
+
+/* Remove button styling (red) */
+.toggle-comparison.remove {
+    background-color: var(--negative-color);
+}
+
+/* Favorite button styling */
+.toggle-favorite {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 6px;
+    transition: all 0.2s;
+}
+
+/* Hover effect for favorite button */
+.toggle-favorite:hover {
+    transform: scale(1.1);
+}
+
+/* Favorite star icon styling */
+.fas.fa-star {
+    color: #fbbc05;
+}
+
+/* =======================================
+ * CHART BUTTON
+ * ======================================= */
+/* Styling for the view chart button */
+.chart-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: rgba(66, 133, 244, 0.1);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+}
+
+/* Hover effect for chart button */
+.chart-btn:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+/* =======================================
+ * SECTION HEADINGS
+ * ======================================= */
+/* Spacing for main content sections */
+.comparison-section, .crypto-list {
+    margin-bottom: 30px;
+}
+
+/* Section heading styling with bottom border */
+.comparison-section h2, .crypto-list h2 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* =======================================
+ * FAVORITES SECTION
+ * ======================================= */
+/* Container for favorite cryptocurrencies */
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 8px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+/* Individual favorite item styling */
+.favorite-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+/* Smaller logo for favorites list */
+.favorite-item .crypto-logo {
+    width: 20px;
+    height: 20px;
+}
+
+/* Cryptocurrency name in favorites */
+.favorite-item span {
+    flex: 1;
+}
+
+/* Empty favorites message */
+.no-favorites {
+    text-align: center;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+/* =======================================
+ * LOADING AND STATUS INDICATORS
+ * ======================================= */
+/* Loading and error message styling */
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    margin: 15px 0;
+}
+
+/* Error message specific styling */
+.error {
+    color: var(--negative-color);
+}
+
+/* Last update timestamp styling */
+.last-update {
+    text-align: right;
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+/* =======================================
+ * RESPONSIVE DESIGN
+ * ======================================= */
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .preference-options {
+        flex-direction: column;
+    }
+
+    .crypto-grid, .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =======================================
+ * THEME TOGGLE
+ * ======================================= */
+/* Theme toggle container */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+/* Switch control styling */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Checkbox input styling */
+.switch input {
+    margin-right: 5px;
+}
+
+/* =======================================
+ * STATISTICS VALUES
+ * ======================================= */
+/* Styling for statistics numbers */
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* =======================================
+ * MODAL STYLES
+ * ======================================= */
+/* Full-screen modal background */
+.chart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+/* Modal content container */
+.modal-content {
+    background: var(--card-background);
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+/* Close button for modal */
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* =======================================
+ * COMPARISON CONTROLS
+ * ======================================= */
+/* Buttons for comparison actions */
+.comparison-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+} 
