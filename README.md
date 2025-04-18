@@ -37,7 +37,7 @@ A modern web application for tracking and comparing cryptocurrency prices, marke
 No build process or dependencies to install. Simply open `index.html` in a modern web browser.
 
 ```
-git clone https://github.com/.git
+git clone https://github.com/SaxenaNikhil/Cryptocurrency-Tracker.git
 cd cryptocurrency-tracker
 open index.html
 ```
